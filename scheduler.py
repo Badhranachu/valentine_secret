@@ -29,7 +29,7 @@ def mails_allowed():
 
 # ---------- DAILY SCHEDULER ----------
 def run_daily_scheduler(app):
-    today = date(2026, 2, 14)
+    today = date.today()
 
 
     # Not a Valentine week day
