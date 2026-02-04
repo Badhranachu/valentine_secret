@@ -7,6 +7,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
 
+        /* Global Box Sizing Fix for Mobile */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #ff4d6d;
             --secondary: #ff758f;
@@ -22,15 +27,14 @@
             background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
             min-height: 100vh;
             margin: 0;
-            padding: 40px 20px; /* Increased padding to prevent top clipping */
+            padding: 40px 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Changed from center to allow scrolling without clipping */
+            justify-content: flex-start;
             color: var(--text);
             overflow-x: hidden;
             position: relative;
-            box-sizing: border-box;
         }
 
         /* Enhanced Floating Hearts Animation Background */
@@ -61,7 +65,7 @@
             backdrop-filter: blur(10px);
             max-width: 900px;
             width: 100%;
-            margin: 0 auto 40px; /* Centered with bottom margin */
+            margin: 0 auto 40px;
             padding: 40px;
             border-radius: 30px;
             box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
@@ -83,6 +87,7 @@
             text-align: center;
             margin-bottom: 20px;
             text-shadow: 2px 2px 0px rgba(255, 255, 255, 1);
+            margin-top: 0;
         }
 
         h3 {
@@ -141,7 +146,6 @@
         input:not([type="radio"]), 
         textarea {
             width: 100%;
-            box-sizing: border-box;
             padding: 12px 18px;
             border: 2px solid var(--accent);
             border-radius: 18px;
@@ -214,7 +218,8 @@
             border: 1px solid transparent;
         }
 
-        .option-row:last-child {
+        /* Responsive option row centering */
+        .option-row:last-child:nth-child(odd) {
             grid-column: 1 / span 2;
             justify-self: center;
             width: 100%;
@@ -260,7 +265,7 @@
 
         @keyframes popIn {
             0% { transform: scale(0); opacity: 0; }
-            10% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .option-row input:not([type="radio"]) {
@@ -308,21 +313,30 @@
             filter: brightness(1.1);
         }
 
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
             .options {
                 grid-template-columns: 1fr;
             }
-            .option-row:last-child {
+            .option-row:last-child:nth-child(odd) {
                 grid-column: auto;
                 max-width: 100%;
             }
+            .box {
+                padding: 25px 20px;
+            }
         }
 
-        @media (max-width: 600px) {
-            .box { padding: 25px; border-radius: 20px; }
-            h2 { font-size: 2.2rem; }
-            .day { padding: 20px; }
-            .option-row { gap: 10px; padding: 8px; }
+        @media (max-width: 480px) {
+            body {
+                padding: 20px 15px;
+            }
+            h2 { font-size: 2.4rem; }
+            .day { padding: 20px 15px; }
+            .instructions { padding: 20px 15px; }
+            .option-row { padding: 8px; }
+            .finale { padding: 25px 15px; }
+            .footer-logo { height: 60px; }
         }
 
         html, body {
@@ -331,6 +345,7 @@
             margin: 0;
         }
 
+        /* ---------- Footer ---------- */
         .site-footer {
             background: transparent;
             border: none;
@@ -354,6 +369,7 @@
             transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
         }
 
+        /* ✨ Glow on hover */
         .footer-logo:hover {
             transform: scale(1.08);
             opacity: 1;

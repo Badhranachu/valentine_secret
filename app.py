@@ -48,7 +48,7 @@ def load_user(user_id):
 # ---------------- HOME ----------------
 @app.route("/")
 def home():
-    return redirect("/login")
+    return redirect("/register")
 
 
 # ---------------- REGISTER ----------------

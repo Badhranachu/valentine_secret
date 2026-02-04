@@ -7,6 +7,11 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600&display=swap');
 
+        /* Global Box Sizing Fix for Mobile */
+        * {
+            box-sizing: border-box;
+        }
+
         :root {
             --primary: #ff4d6d;
             --secondary: #ff758f;
@@ -23,15 +28,14 @@
             background: linear-gradient(135deg, #fff0f3 0%, #ffccd5 100%);
             min-height: 100vh;
             margin: 0;
-            padding: 40px 20px; /* Increased padding to prevent top clipping */
+            padding: 20px; /* Adjusted for better mobile spacing */
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start; /* Changed from center to prevent top clipping */
+            justify-content: flex-start;
             color: var(--text);
             overflow-x: hidden;
             position: relative;
-            box-sizing: border-box;
         }
 
         /* Enhanced Floating Hearts Animation Background */
@@ -62,7 +66,7 @@
             backdrop-filter: blur(10px);
             max-width: 600px;
             width: 100%;
-            margin: 0 auto 40px;
+            margin: 20px auto 40px; /* Reduced top margin for mobile */
             padding: 40px;
             border-radius: 35px;
             box-shadow: 0 15px 35px rgba(255, 77, 109, 0.15);
@@ -94,6 +98,7 @@
             margin-bottom: 30px;
             border: 1px solid var(--accent);
             text-align: left;
+            word-wrap: break-word; /* Ensure long emails don't break layout */
         }
 
         .user-info p {
@@ -151,6 +156,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            text-align: right;
         }
 
         .locked {
@@ -160,6 +166,7 @@
             align-items: center;
             gap: 5px;
             opacity: 0.7;
+            text-align: right;
         }
 
         /* Form & Action Buttons */
@@ -212,12 +219,23 @@
             text-decoration: underline;
         }
 
+        /* Mobile Specific Adjustments */
         @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
             .box {
-                padding: 30px 20px;
+                padding: 30px 15px;
+                border-radius: 25px;
             }
             h2 { font-size: 2.2rem; }
-            .day { padding: 12px 18px; }
+            .day { 
+                padding: 12px 15px;
+                font-size: 0.95rem;
+            }
+            .day-label { font-size: 1rem; }
+            .user-info { padding: 15px; }
+            .footer-logo { height: 60px; }
         }
 
         html, body {
